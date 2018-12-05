@@ -25,6 +25,7 @@ public class KebabTest {
     private Kebab kebabVegetarien;
     private Kebab kebabPoisson;
     private Kebab kebabCrevette;
+    private Kebab kebabBoeuf;
     
     @Before
     public void setUp() {
@@ -63,7 +64,7 @@ public class KebabTest {
 																new Pain("pita",
 																		new Assiette())))))));
         
-        
+        kebabBoeuf = new Boeuf("boeuf",new Tomate("tomate rouge",new Assiette()));
 
 
     }
@@ -81,11 +82,17 @@ public class KebabTest {
 								.containsExactly("pita","oignon blanc","cheddar","oignon blanc","gruyere","sauce algérienne","poisson");
     
      	assertThat(kebabCrevette.getIngredients()).extracting("nom")
-		.containsExactly("pita","oignon blanc","sauce algérienne","cheddar","petite crevette","tomate rouge","laitue");
+     							.containsExactly("pita","oignon blanc","sauce algérienne","cheddar","petite crevette","tomate rouge","laitue");
+     	assertThat(kebabBoeuf.getIngredients()).extracting("nom")
+     							.containsExactly("tomate rouge","boeuf");
     }
 
 
     //Vegetarien
+    @Test
+    public void isVegetarien_devrait_retourner_faux_pour_kebabBoeuf() {
+        assertThat(kebabBoeuf.isVegetarien()).isFalse();
+     }
     @Test
     public void isVegetarien_devrait_retourner_vrai_pour_kebabVegetarien() {
         assertThat(kebabVegetarien.isVegetarien()).isTrue();
@@ -107,6 +114,10 @@ public class KebabTest {
     }
 
     //Pescetarien
+    @Test
+    public void isPescetarien_devrait_retourner_faux_pour_kebabBoeuf() {
+        assertThat(kebabBoeuf.isPescetarien()).isFalse();
+    }
     @Test
     public void isPescetarien_devrait_retourner_faux_pour_kebabCarnivore() {
         assertThat(kebabCarnivore.isPescetarien()).isFalse();
