@@ -1,5 +1,6 @@
 package fr.unilim.iut.kebab.ingredients;
 
+import Visitor.VisiteurDeRegimeVegetarien;
 import fr.unilim.iut.kebab.Kebab;
 
 public class Crevette extends Ingredient {
@@ -26,6 +27,11 @@ public class Crevette extends Ingredient {
         ce ne serait même pas la peine d'écrire (de redéfinir) dans cette classe isPescetarien
         car son comportement n'apporte rien de nouveau ... ;-) */
     }
+
+	@Override
+	public void accept(VisiteurDeRegimeVegetarien v) {
+		v.visit(this);
+	}
     
  
 }

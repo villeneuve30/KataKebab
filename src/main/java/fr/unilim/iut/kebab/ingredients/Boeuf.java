@@ -1,5 +1,6 @@
 package fr.unilim.iut.kebab.ingredients;
 
+import Visitor.VisiteurDeRegimeVegetarien;
 import fr.unilim.iut.kebab.Kebab;
 
 public class Boeuf extends Ingredient {
@@ -18,5 +19,11 @@ public class Boeuf extends Ingredient {
     public boolean isPescetarien() {
         return false;
     }
+
+	@Override
+	public void accept(VisiteurDeRegimeVegetarien v) {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

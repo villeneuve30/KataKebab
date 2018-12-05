@@ -34,4 +34,7 @@ public class VisiteurDeRegimeVegetarien implements VisiteurDeRegime{
 	public boolean visit(Assiette assiette) {
 		return true;
 	}
+	public boolean visit(Pain pain) {
+		return true;
+	}
 }
